@@ -238,6 +238,19 @@
                     </div>
                     <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
                 </div>
+                <!-- VIP Suite -->
+                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('VIP Suite', 2890, this)">
+                    <div>
+                        <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
+                            VIP Suite
+                            <span class="ticket-quantity">(12 tickets)</span>
+                        </h3>
+                        <p class="text-sm text-[#000000]">Location: Private premium suite with the best stadium view.</p>
+                        <p class="text-sm text-[#000000]">Features: Exclusive VIP box for your group, early entry, private restroom, dedicated service, premium seating and gifts.</p>
+                        <p class="text-blue-400 font-semibold">$2,890</p>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
+                </div>
             </div>
         </section>
 
@@ -306,6 +319,9 @@
                         case 'VIP':
                             checkoutUrl = 'https://book.stripe.com/cNibJ1gNX2oB7mf6MQ4AU0w';
                             break;
+                        case 'VIP Suite':
+                            checkoutUrl = 'https://book.stripe.com/5kQ3cv1T3e7j35Z2wA4AU0y';
+                            break;
                     }
                     window.location.href = checkoutUrl;
                 };
@@ -316,8 +332,8 @@
 
         // Temporizador
         function startTimer() {
-            // Definir o tempo inicial a partir de 11:07 PM -03, 08 de junho de 2025 (hora atual do sistema)
-            const now = new Date("2025-06-08T23:07:00-03:00");
+            // Definir o tempo inicial a partir de 11:34 PM -03, 08 de junho de 2025 (hora atual do sistema)
+            const now = new Date("2025-06-08T23:34:00-03:00");
             const endTime = new Date(now.getTime() + (1 * 3600 + 27 * 60 + 6) * 1000); // Adiciona 1h 27m 6s (5226 segundos)
             const timerElement = document.getElementById('timer');
             // Definir o tempo inicial como 1:27:06 no carregamento
