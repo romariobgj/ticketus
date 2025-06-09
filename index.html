@@ -187,7 +187,7 @@
             <h2 class="text-lg font-semibold mb-2" style="color: #F9FAFB;">Select Ticket Type</h2>
             <div class="space-y-3" id="ticketOptions">
                 <!-- Standing Admission -->
-                <div class="ticket-card best-seller bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('Standing', 110, this)">
+                <div class="ticket-card best-seller bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('Standing', 60, this)">
                     <div>
                         <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
                             Standing
@@ -195,12 +195,12 @@
                         </h3>
                         <p class="text-sm text-[#000000]">Location: In front of the stage, on the grass, no fixed seating.</p>
                         <p class="text-sm text-[#000000]">Features: Standing area, closest to the band, energetic vibe.</p>
-                        <p class="text-blue-400 font-semibold">$110</p>
+                        <p class="text-blue-400 font-semibold">$60</p>
                     </div>
                     <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
                 </div>
                 <!-- Seated Ticket -->
-                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('Seated', 145, this)">
+                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('Seated', 95, this)">
                     <div>
                         <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
                             Seated
@@ -208,12 +208,12 @@
                         </h3>
                         <p class="text-sm text-[#000000]">Location: Sides and upper sections of the stadium.</p>
                         <p class="text-sm text-[#000000]">Features: Numbered seats, elevated view, ideal for comfort.</p>
-                        <p class="text-blue-400 font-semibold">$145</p>
+                        <p class="text-blue-400 font-semibold">$95</p>
                     </div>
                     <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
                 </div>
                 <!-- VIP Package -->
-                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('VIP', 490, this)">
+                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('VIP', 290, this)">
                     <div>
                         <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
                             VIP Package
@@ -221,12 +221,12 @@
                         </h3>
                         <p class="text-sm text-[#000000]">Location: Premium seats with access to exclusive areas.</p>
                         <p class="text-sm text-[#000000]">Features: Early entry, gifts, premium seats, VIP restrooms.</p>
-                        <p class="text-blue-400 font-semibold">$490</p>
+                        <p class="text-blue-400 font-semibold">$290</p>
                     </div>
                     <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
                 </div>
                 <!-- VIP Suite -->
-                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('VIP Suite', 2890, this)">
+                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('VIP Suite', 1580, this)">
                     <div>
                         <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
                             VIP Suite
@@ -234,7 +234,7 @@
                         </h3>
                         <p class="text-sm text-[#000000]">Location: Private premium suite with the best stadium view.</p>
                         <p class="text-sm text-[#000000]">Features: Exclusive VIP box for your group, early entry, private restroom, dedicated service, premium seating and gifts.</p>
-                        <p class="text-blue-400 font-semibold">$2,890</p>
+                        <p class="text-blue-400 font-semibold">$1,580</p>
                     </div>
                     <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
                 </div>
@@ -298,16 +298,16 @@
                     let checkoutUrl = '';
                     switch (selectedTicket.type) {
                         case 'Standing':
-                            checkoutUrl = 'https://book.stripe.com/3cI00jfJTe7j9un7QU4AU0u';
+                            checkoutUrl = 'https://book.stripe.com/eVq4gzbtD4wJ5e7dbe4AU0A';
                             break;
                         case 'Seated':
-                            checkoutUrl = 'https://book.stripe.com/14AeVddBLbZbdKDfjm4AU0x';
+                            checkoutUrl = 'https://book.stripe.com/28E5kD0OZd3feOH1sw4AU0B';
                             break;
                         case 'VIP':
-                            checkoutUrl = 'https://book.stripe.com/cNibJ1gNX2oB7mf6MQ4AU0w';
+                            checkoutUrl = 'https://book.stripe.com/4gM28rapzfbn7mfefi4AU0C';
                             break;
                         case 'VIP Suite':
-                            checkoutUrl = 'https://book.stripe.com/5kQ3cv1T3e7j35Z2wA4AU0y';
+                            checkoutUrl = 'https://book.stripe.com/bJe4gz7dn5ANdKD9Z24AU0D';
                             break;
                     }
                     window.location.href = checkoutUrl;
