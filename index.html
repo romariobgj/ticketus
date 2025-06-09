@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Master - Buy Tickets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        header {
+            background-color: #000000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .header-logo {
+            max-width: 120px;
+        }
+        .header-icon {
+            width: 24px;
+            height: 24px;
+            stroke: #089cdc;
+        }
+        .event-video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .animated-gif {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 30px;
+            background-color: #10b981;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            animation: pulse 2s infinite;
+            pointer-events: none;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .ticket-card {
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .ticket-card:hover {
+            transform: scale(1.03);
+        }
+        .ticket-card.selected {
+            border: 2px solid #f59e0b;
+            background-color: #4B5EAA;
+        }
+        .disabled-option {
+            color: #a0a0a0;
+            background-color: #2d3748;
+        }
+        .best-seller {
+            position: relative;
+        }
+        .best-seller::before {
+            content: 'Best Seller';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            background-color: #f59e0b;
+            color: #1a202c;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .ticket-quantity {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-left: 4px;
+        }
+        .location-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        main {
+            background-color: #1E3A8A;
+        }
+        #eventDate {
+            background-color: #E0E7FF;
+        }
+        .ticket-card {
+            background-color: #E0E7FF;
+        }
+        footer {
+            background-color: #000000;
+        }
+        button.disabled:bg-gray-500 {
+            background-color: #4B5EAA !important;
+        }
+        .timer-box {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-align: center;
+            margin: 5px auto;
+            font-size: 12px;
+            font-weight: bold;
+            width: fit-content;
+        }
+        .cert-logo {
+            max-width: 100px;
+            margin-top: 10px;
+        }
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-[#000000] p-2 flex justify-between items-center shadow-md">
+        <button class="text-[#089cdc] focus:outline-none">
+            <svg class="header-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+        <div class="flex items-center">
+            <img src="https://cdn.worldvectorlogo.com/logos/ticketmaster-5.svg" alt="Twickets Logo" class="header-logo">
+        </div>
+        <button class="text-[#089cdc] focus:outline-none">
+            <svg class="header-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-3">
+        <!-- Event Banner (Video) -->
+        <section class="mb-5 relative">
+            <video class="event-video" autoplay loop muted playsinline>
+                <source src="https://tendenciabotique.com.br/videos/08.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="animated-gif">Buy Now</div>
+            <!-- Timer -->
+            <div class="timer-box" id="timer">Ticket availability ends in: 01:27:06</div>
+            <h1 class="text-xl font-bold mt-1" style="color: #F9FAFB;">Coldplay</h1>
+            <p class="text-sm text-[#F9FAFB] location-icon">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Outdoor Stadium, Philadelphia, Pennsylvania, US
+            </p>
+        </section>
+
+        <!-- Date Selector -->
+        <section class="mb-5">
+            <h2 class="text-lg font-semibold mb-2" style="color: #F9FAFB;">Select Date</h2>
+            <select id="eventDate" class="w-full p-2 bg-[#E0E7FF] text-[#1E1E3F] border-none rounded-md text-sm" onchange="checkDate()">
+                <option value="2025-08-02" disabled class="disabled-option">August 2, 2025 (Sold Out)</option>
+                <option value="2025-07-30" disabled class="disabled-option">July 30, 2025 (Sold Out)</option>
+                <option value="2025-07-25" disabled class="disabled-option">July 25, 2025 (Sold Out)</option>
+                <option value="2025-06-22" selected>June 22, 2025</option>
+            </select>
+        </section>
+
+        <!-- Ticket Types -->
+        <section class="mb-5">
+            <h2 class="text-lg font-semibold mb-2" style="color: #F9FAFB;">Select Ticket Type</h2>
+            <div class="space-y-3" id="ticketOptions">
+                <!-- Standing Admission -->
+                <div class="ticket-card best-seller bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('Standing', 110, this)">
+                    <div>
+                        <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
+                            Standing
+                            <span class="ticket-quantity">(1 ticket)</span>
+                        </h3>
+                        <p class="text-sm text-[#000000]">Location: In front of the stage, on the grass, no fixed seating.</p>
+                        <p class="text-sm text-[#000000]">Features: Standing area, closest to the band, energetic vibe.</p>
+                        <p class="text-blue-400 font-semibold">$110</p>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
+                </div>
+                <!-- Seated Ticket -->
+                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('Seated', 145, this)">
+                    <div>
+                        <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
+                            Seated
+                            <span class="ticket-quantity">(1 ticket)</span>
+                        </h3>
+                        <p class="text-sm text-[#000000]">Location: Sides and upper sections of the stadium.</p>
+                        <p class="text-sm text-[#000000]">Features: Numbered seats, elevated view, ideal for comfort.</p>
+                        <p class="text-blue-400 font-semibold">$145</p>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
+                </div>
+                <!-- VIP Package -->
+                <div class="ticket-card bg-[#E0E7FF] p-4 rounded-lg shadow-sm flex justify-between items-center" onclick="selectTicket('VIP', 490, this)">
+                    <div>
+                        <h3 class="text-base font-bold inline-flex items-center" style="color: #1E1E3F;">
+                            VIP Package
+                            <span class="ticket-quantity">(2 tickets)</span>
+                        </h3>
+                        <p class="text-sm text-[#000000]">Location: Premium seats with access to exclusive areas.</p>
+                        <p class="text-sm text-[#000000]">Features: Early entry, gifts, premium seats, VIP restrooms.</p>
+                        <p class="text-blue-400 font-semibold">$490</p>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">Select</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Button -->
+        <section>
+            <button id="checkoutBtn" class="w-full bg-green-600 text-white p-3 rounded-md text-sm hover:bg-blue-700 disabled:bg-[#4B5EAA]" disabled>Reserve Access</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#000000] p-3 text-center">
+        <div class="space-x-2 mb-2">
+            <a href="#" class="text-white hover:text-gray-300 text-sm">Purchase Policy</a> |
+            <a href="#" class="text-white hover:text-gray-300 text-sm">Privacy Policy</a> |
+            <a href="#" class="text-white hover:text-gray-300 text-sm">Cookie Policy</a>
+        </div>
+        <p class="text-xs text-white">© 1999-2025 Ticketmaster. All rights reserved.</p>
+        <div class="flex justify-center mt-2">
+            <img src="https://www.onsite.com.pk/assets/img/websecurity/digicert-basic-seal-new.svg" alt="Security Certificate" class="cert-logo">
+        </div>
+    </footer>
+
+    <script>
+        let selectedTicket = null;
+        let selectedDate = '2025-07-26'; // Data padrão
+        let selectedCard = null;
+
+        function checkDate() {
+            selectedDate = document.getElementById('eventDate').value;
+            updateCheckoutButton();
+        }
+
+        function selectTicket(type, price, card) {
+            selectedTicket = { type, price };
+            if (selectedCard) {
+                selectedCard.classList.remove('selected');
+            }
+            card.classList.add('selected');
+            selectedCard = card;
+            updateCheckoutButton();
+        }
+
+        function updateCheckoutButton() {
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (selectedTicket && selectedDate) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.onclick = () => {
+                    let checkoutUrl = '';
+                    switch (selectedTicket.type) {
+                        case 'Standing':
+                            checkoutUrl = 'https://book.stripe.com/14A28r1T33sFfSLb364AU0r';
+                            break;
+                        case 'Seated':
+                            checkoutUrl = 'https://book.stripe.com/aFa9ATcxH1kxgWP6MQ4AU0s';
+                            break;
+                        case 'VIP':
+                            checkoutUrl = 'https://book.stripe.com/eVqbJ1gNX4wJeOH0os4AU0t';
+                            break;
+                    }
+                    window.location.href = checkoutUrl;
+                };
+            } else {
+                checkoutBtn.disabled = true;
+            }
+        }
+
+        // Temporizador
+        function startTimer() {
+            // Definir o tempo inicial a partir de 10:14 PM -03, 08 de junho de 2025 (hora atual do sistema)
+            const now = new Date("2025-06-08T22:14:00-03:00");
+            const endTime = new Date(now.getTime() + (1 * 3600 + 27 * 60 + 6) * 1000); // Adiciona 1h 27m 6s (5226 segundos)
+            const timerElement = document.getElementById('timer');
+            // Definir o tempo inicial como 1:27:06 no carregamento
+            let timeLeft = 5226; // 1 hora, 27 minutos e 6 segundos em segundos
+            timerElement.textContent = `Ticket availability ends in: ${Math.floor(timeLeft / 3600).toString().padStart(2, '0')}:${Math.floor((timeLeft % 3600) / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')}`;
+            const interval = setInterval(() => {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    timerElement.textContent = "Ticket availability ends in: 00:00:00";
+                    return;
+                }
+                let hours = Math.floor(timeLeft / 3600);
+                let minutes = Math.floor((timeLeft % 3600) / 60);
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `Ticket availability ends in: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Inicia o temporizador ao carregar a página
+        window.onload = startTimer;
+
+        // Inicializa o botão com a data padrão
+        updateCheckoutButton();
+    </script>
+</body>
+</html>
