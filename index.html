@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Master - Buy Tickets</title>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '598349956625295');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=598349956625295&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -245,11 +262,13 @@
 
     <script>
         let selectedTicket = null;
-        let selectedDate = '2025-07-26'; // Data padrão
+        let selectedDate = '2025-06-22'; // Data padrão
         let selectedCard = null;
 
         function checkDate() {
             selectedDate = document.getElementById('eventDate').value;
+            // Track date selection event
+            fbq('track', 'SelectDate', { date: selectedDate });
             updateCheckoutButton();
         }
 
@@ -260,6 +279,8 @@
             }
             card.classList.add('selected');
             selectedCard = card;
+            // Track ticket selection event
+            fbq('track', 'SelectTicket', { ticket_type: type, price: price });
             updateCheckoutButton();
         }
 
@@ -268,6 +289,12 @@
             if (selectedTicket && selectedDate) {
                 checkoutBtn.disabled = false;
                 checkoutBtn.onclick = () => {
+                    // Track checkout button click event
+                    fbq('track', 'InitiateCheckout', { 
+                        ticket_type: selectedTicket.type, 
+                        price: selectedTicket.price, 
+                        date: selectedDate 
+                    });
                     let checkoutUrl = '';
                     switch (selectedTicket.type) {
                         case 'Standing':
@@ -289,8 +316,8 @@
 
         // Temporizador
         function startTimer() {
-            // Definir o tempo inicial a partir de 10:14 PM -03, 08 de junho de 2025 (hora atual do sistema)
-            const now = new Date("2025-06-08T22:14:00-03:00");
+            // Definir o tempo inicial a partir de 11:07 PM -03, 08 de junho de 2025 (hora atual do sistema)
+            const now = new Date("2025-06-08T23:07:00-03:00");
             const endTime = new Date(now.getTime() + (1 * 3600 + 27 * 60 + 6) * 1000); // Adiciona 1h 27m 6s (5226 segundos)
             const timerElement = document.getElementById('timer');
             // Definir o tempo inicial como 1:27:06 no carregamento
